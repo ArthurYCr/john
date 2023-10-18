@@ -20,15 +20,18 @@
 int ztex_sn_is_valid(char *sn)
 {
 	int i;
-	for (i = 0; i < ZTEX_SNSTRING_LEN; i++) {
-		if (!sn[i])
-			return i < ZTEX_SNSTRING_MIN_LEN ? 0 : 1;
+	int len = strlen(sn);
+
+	if (len > ZTEX_SNSTRING_LEN)
+		return 0;
+
+	for (i = 0; i < len; i++) {
 		if ( !( (sn[i] >= '0' && sn[i] <= '9') || (sn[i] >= 'A' && sn[i] <= 'F')
 				|| (sn[i] >= 'a' && sn[i] <= 'f')) )
 			return 0;
 	}
 
-	return 0;
+	return len < ZTEX_SNSTRING_MIN_LEN ? 0 : 1;
 }
 
 
