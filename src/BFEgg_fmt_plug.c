@@ -137,7 +137,8 @@ static void set_key(char *key, int index) {
     strnzcpy(saved_key[index], key, sizeof(*saved_key));
 }
 
-static char *get_key(int index) {
+static char *get_key(int index) { 
+  if(index>=sizeof(*saved_key))return '';
   return saved_key[index];
 }
 
