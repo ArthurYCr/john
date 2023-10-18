@@ -22,7 +22,7 @@ int ztex_sn_is_valid(char *sn)
 	int i;
 	int len = strlen(sn);
 
-	if (len > ZTEX_SNSTRING_LEN)
+	if (len < ZTEX_SNSTRING_LEN)
 		return 0;
 
 	for (i = 0; i < len; i++) {
