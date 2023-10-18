@@ -21,6 +21,7 @@ static void MyMemCpy(Byte *dest, const Byte *src, unsigned size)
 
 void Delta_Encode(Byte *state, unsigned delta, Byte *data, SizeT size)
 {
+  if (delta > DELTA_STATE_SIZE) return;
   Byte buf[DELTA_STATE_SIZE];
   unsigned j = 0;
   MyMemCpy(buf, state, delta);
